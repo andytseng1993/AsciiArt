@@ -17,6 +17,8 @@ class Cell{
         this.color= color
     }
     draw(ctx){
+        ctx.fillStyle = 'white'
+        ctx.fillText(this.symbol,this.x+0.5,this.y+0.5)
         ctx.fillStyle =this.color
         ctx.fillText(this.symbol,this.x,this.y)
     }
@@ -90,6 +92,7 @@ function handleSlider(){
     }
     else{
         inputLabel.textContent = 'Resolution: '+inputSlider.value + 'px'
+        ctx.font=parseInt(inputSlider.value)* 1.2+'px Verdana'
         effect.draw(parseInt(inputSlider.value))
     }
 }
@@ -98,5 +101,5 @@ image1.onload = function initialize(){
     canvas.width = image1.width
     canvas.height = image1.height
     effect =new AsciiEffect(ctx,image1.width,image1.height)
-    effect.draw(10)
+    handleSlider()
 }
